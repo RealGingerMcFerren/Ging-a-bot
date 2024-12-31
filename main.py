@@ -19,7 +19,7 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     status_channel = client.get_channel(1323516719402061844)
-    await status_channel.send("Bot Start, running on `fedora`.")
+    await status_channel.send("Bot Start, running on `{Device}`.")
 
 # Sends out a welcome message when a new member joins.
 @client.event
