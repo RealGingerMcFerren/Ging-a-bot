@@ -3,8 +3,13 @@ import discord
 from discord.ext import commands
 from discord import ui
 from mimetypes import init
-from discord.ext import commands
 from discord.ext.commands import Context
+from dotenv import load_dotenv
+import os
+
+# Thingies :3
+load_dotenv('token.env')
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 
 
 # Intents
@@ -19,7 +24,7 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     status_channel = client.get_channel(1323516719402061844)
-    await status_channel.send("Bot Start, running on `{Device}`.")
+    await status_channel.send("Bot Start, running on `fedora`.")
 
 # Sends out a welcome message when a new member joins.
 @client.event
@@ -28,4 +33,4 @@ async def on_member_join(member):
     await welcome_channel.send(f"Hello, {member.mention}! We welcome you to Ginger's Home.")
 
 # YOU BETTER NOT SHARE THIS FUCKING TOKEN OR I WILL END YOU
-client.run("TOKEN")
+client.run(DISCORD_TOKEN)
