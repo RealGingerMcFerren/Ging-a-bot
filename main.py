@@ -10,6 +10,7 @@ import os
 # Thingies :3
 load_dotenv('token.env')
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+ready_message_sent = False
 
 
 # Intents
@@ -24,7 +25,10 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     status_channel = client.get_channel(1323516719402061844)
-    await status_channel.send("Bot Start, running on `fedora`.")
+    global ready_message_sent
+    if not ready_message_sent:
+        await status_channel.send("Bot Start, running on Ging-Laptop.")
+        ready_message_sent = True
 
 # Sends out a welcome message when a new member joins.
 @client.event
